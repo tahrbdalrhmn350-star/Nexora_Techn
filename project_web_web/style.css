@@ -310,130 +310,200 @@ header p {
    CONTACT
 ========================= */
 .contact {
-    padding: 50px;
-    text-align: center;
-    font-family: Arial, sans-serif;
+  padding: 50px;
+  text-align: center;
+  font-family: Arial, sans-serif;
 }
 
 /* FORM CONTAINER */
-.contact > div {
-    animation: fadeUp 1s ease;
-    transition: background 0.3s, color 0.3s;
-    border-radius: 10px;
-    padding: 20px;
-    background-color: #f0f0f0; /* Light Mode */
+.form-container {
+  animation: fadeUp 1s ease;
+  transition: background 0.3s, color 0.3s;
+  border-radius: 10px;
+  padding: 20px;
+  background-color: #f0f0f0; /* Light Mode */
 }
 
 /* INPUTS, TEXTAREA, SELECT */
 .contact input,
 .contact textarea,
 .contact select {
-    width: 100%;
-    padding: 8px 10px;
-    border-radius: 6px;
-    border: 1px solid #ccc;
-    margin-top: 4px;
-    margin-bottom: 10px;
-    font-size: 14px;
-    background-color: #fff; /* Light Mode */
-    color: #000;
-    transition: background 0.3s, color 0.3s, border-color 0.3s;
+  width: 100%;
+  padding: 8px 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  margin-top: 4px;
+  margin-bottom: 10px;
+  font-size: 14px;
+  background-color: #fff;
+  color: #000;
+  transition: background 0.3s, color 0.3s, border-color 0.3s;
 }
 
 /* Placeholder */
 .contact input::placeholder,
 .contact textarea::placeholder,
 .contact select::placeholder {
-    color: #888;
-    transition: color 0.3s;
+  color: #888;
+  transition: color 0.3s;
 }
 
 /* LABELS & HEADERS */
 .contact label,
 .contact h2 {
-    color: #000;
-    transition: color 0.3s;
+  color: #000;
+  transition: color 0.3s;
 }
 
 /* TEXT + ICONS */
 .contact p {
-    color: #000; /* Light Mode text */
-    transition: color 0.3s;
+  color: blue;
+  transition: color 0.3s;
 }
 
 .contact p i.fa-phone {
-    color: #008fff; /* Light mode phone icon */
+  color: #008fff;
 }
 
 .contact p i.fa-location-pin {
-    color: #ff0000; /* Light mode location icon */
+  color: #ff0000;
 }
 
-/* SUBMIT BUTTON */
+/* BUTTON */
 .contact button {
-    background-color: #3b82f6; /* blue-500 */
-    color: #fff;
-    border: none;
-    border-radius: 6px;
-    padding: 8px 16px;
-    cursor: pointer;
-    transition: background 0.3s, transform 0.2s;
+  background-color: #3b82f6;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
 }
 
 .contact button:hover {
-    background-color: #2563eb; /* blue-600 */
-    transform: scale(1.05);
+  background-color: #2563eb;
+  transform: scale(1.05);
 }
 
 /* =========================
    DARK MODE
 ========================= */
-body.dark-mode .contact > div {
-    background-color: #1a1a1a; /* Dark Mode form background */
+body.dark-mode .form-container {
+  background-color: #1a1a1a;
 }
 
 body.dark-mode .contact input,
 body.dark-mode .contact textarea,
 body.dark-mode .contact select {
-    background-color: #222;
-    color: #fff;
-    border-color: #444;
+  background-color: #222;
+  color: #fff;
+  border-color: #444;
 }
 
 body.dark-mode .contact input::placeholder,
 body.dark-mode .contact textarea::placeholder,
 body.dark-mode .contact select::placeholder {
-    color: #aaa;
+  color: #aaa;
 }
 
 body.dark-mode .contact label,
 body.dark-mode .contact h2,
 body.dark-mode .contact p,
 body.dark-mode .contact p i {
-    color: #fff; /* كل النصوص والأيقونات أبيض */
+  color: #fff;
 }
 
 body.dark-mode .contact button {
-    background-color: #2563eb;
-    color: #fff;
+  background-color: #2563eb;
+  color: #fff;
 }
 
 body.dark-mode .contact button:hover {
-    background-color: #1d4ed8;
+  background-color: #1d4ed8;
+}
+
+/* =========================
+   SELECT2
+========================= */
+.select2-container--default .select2-selection--single {
+  height: 38px;
+  padding: 6px 8px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+}
+
+/* Flag + Text */
+.select2-container .select2-selection__rendered {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.select2-container .select2-selection__rendered img {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* Dropdown */
+.select2-dropdown {
+  border-radius: 6px;
+  overflow: hidden;
+  background-color: #fff;
+  color: #000;
+}
+
+.select2-results__option--highlighted {
+  background-color: #3b82f6 !important;
+  color: #fff !important;
+}
+
+/* =========================
+   DARK MODE FOR SELECT2
+========================= */
+body.dark-mode .select2-container--default .select2-selection--single {
+  background-color: #222;
+  color: #fff;
+  border-color: #444;
+}
+
+body.dark-mode .select2-dropdown {
+  background-color: #222 !important;
+  color: #fff !important;
+}
+
+body.dark-mode .select2-results__option {
+  color: #fff !important;
+}
+
+body.dark-mode .select2-results__option[aria-selected="true"] {
+  background-color: #333 !important;
+  color: #fff !important;
+}
+
+body.dark-mode .select2-results__option--highlighted {
+  background-color: #2563eb !important;
+  color: #fff !important;
+}
+
+body.dark-mode .select2-selection__placeholder {
+  color: #aaa !important;
+}
+
+body.dark-mode .select2-search__field {
+  background-color: #222 !important;
+  color: #fff !important;
+  border: 1px solid #444 !important;
 }
 
 /* =========================
    ANIMATION
 ========================= */
 @keyframes fadeUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 /* =========================
@@ -672,6 +742,7 @@ footer {
 
 /* =========================
    RESPONSIVE MEDIA QUERIES
+   + Dark Mode Button Adjustments
 ========================= */
 
 /* -------------------------
@@ -696,6 +767,17 @@ footer {
     text-align: left;
   }
 
+  /* Dark Mode Button responsive */
+  #darkModeToggle {
+    align-self: flex-start; /* يظهر الزرار فوق اللينكات أو جنبهم */
+    margin-top: 5px;
+    width: auto;
+  }
+
+  #darkModeToggle i {
+    font-size: 18px; /* حجم مناسب على الأجهزة المتوسطة */
+  }
+
   .search-container {
     width: 100%;
     justify-content: space-between;
@@ -703,6 +785,21 @@ footer {
 
   .search-container input {
     flex: 1;
+  }
+}
+
+/* -------------------------
+   Small Devices (Phones)
+------------------------- */
+@media (max-width: 480px) {
+  nav ul li,
+  nav ul button {
+    font-size: 14px; /* تصغير حجم النص على الهواتف الصغيرة */
+  }
+
+  /* Dark Mode button صغير على الآيفون */
+  #darkModeToggle i {
+    font-size: 16px;
   }
 }
 
