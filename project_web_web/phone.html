@@ -1917,23 +1917,13 @@
 <div class="cart-wrapper">
     <button class="cart-icon">
         <i class="fa-solid fa-cart-arrow-down" style="color: rgb(255, 254, 251);"></i> 
-        <span class="cart-count">0</span>
     </button>
+    
 </div>
-
-<!-- Cart Modal -->
-<div class="cart-modal">
-    <div class="cart-content">
-        <h2>سلة المشتريات</h2>
-        <ul class="cart-items"></ul>
-        <button class="close-cart">إغلاق</button>
-    </div>
-</div>
-
 <!-- Buy Now Message -->
 <div class="buy-message" id="buyMessage">تم إضافة المنتج إلى السلة <i class="fa-solid fa-cart-arrow-down" style="color: rgb(255, 254, 251);"></i></div>
 <body>
-    <script>
+<script>
 // =======================
 // Like Button + Counter
 // =======================
@@ -1942,62 +1932,30 @@ document.querySelectorAll(".like-wrapper").forEach(wrapper => {
     const id = checkbox.id;
     const countEl = wrapper.parentElement.querySelector(`[data-id="${id}"]`);
 
-    // استرجاع عدد اللايكات من localStorage أو من الصفحة
     let likes = localStorage.getItem(id + "_count");
-    if (likes === null) {
-        likes = parseInt(countEl.innerText);
-    } else {
-        likes = parseInt(likes);
-        countEl.innerText = likes;
-    }
+    likes = likes === null ? parseInt(countEl.innerText) : parseInt(likes);
+    countEl.innerText = likes;
 
-    // استرجاع حالة checked
-    if (localStorage.getItem(id) === "true") {
-        checkbox.checked = true;
-    }
+    if (localStorage.getItem(id) === "true") checkbox.checked = true;
 
     checkbox.addEventListener("change", () => {
-        if (checkbox.checked) {
-            likes++;
-            localStorage.setItem(id, "true");
-        } else {
-            likes--;
-            localStorage.setItem(id, "false");
-        }
-
+        likes = checkbox.checked ? likes + 1 : likes - 1;
+        localStorage.setItem(id, checkbox.checked ? "true" : "false");
         countEl.innerText = likes;
         localStorage.setItem(id + "_count", likes);
     });
 });
 
 // =======================
-// Buy Now Button
+// Cart & Buy Now (مختصر)
 // =======================
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 const cartCount = document.querySelector(".cart-count");
-const cartModal = document.querySelector(".cart-modal");
-const cartItemsList = document.querySelector(".cart-items");
-const cartIcon = document.querySelector(".cart-icon");
-const closeCartBtn = document.querySelector(".close-cart");
 const buyMessage = document.getElementById("buyMessage");
 
-// تحديث عرض عدد المنتجات وسلة المشتريات
+// تحديث عداد السلة فقط (بدون modal قديم)
 function updateCartUI() {
-    cartCount.innerText = cart.length;
-    cartItemsList.innerHTML = "";
-    cart.forEach((item, index) => {
-        const li = document.createElement("li");
-        li.innerHTML = `<span>${item.title} - ${item.price}</span> <button data-index="${index}">حذف</button>`;
-        cartItemsList.appendChild(li);
-
-        // إضافة الحدث لزر الحذف
-        li.querySelector("button").addEventListener("click", (e) => {
-            const i = e.target.dataset.index;
-            cart.splice(i, 1);
-            localStorage.setItem("cart", JSON.stringify(cart));
-            updateCartUI();
-        });
-    });
+    if (cartCount) cartCount.innerText = cart.length;
 }
 
 // Load initial cart
@@ -2014,63 +1972,40 @@ document.querySelectorAll(".buy-btn").forEach(btn => {
         localStorage.setItem("cart", JSON.stringify(cart));
         updateCartUI();
 
-        // تظهر السلة تلقائياً
-        cartModal.style.display = "flex";
-
-        // رسالة Buy Now
-        buyMessage.style.display = "block";
-        setTimeout(() => {
-            buyMessage.style.display = "none";
-        }, 3000); // تظهر لمدة 3 ثواني
+        // ظهور رسالة Buy Now
+        if (buyMessage) {
+            buyMessage.style.display = "block";
+            setTimeout(() => {
+                buyMessage.style.display = "none";
+            }, 3000);
+        }
     });
-});
-
-// فتح السلة عند الضغط على أيقونة Cart
-cartIcon.addEventListener("click", () => {
-    cartModal.style.display = "flex";
-});
-
-// غلق السلة
-closeCartBtn.addEventListener("click", () => {
-    cartModal.style.display = "none";
-});
-
-// غلق عند الضغط على الخلفية
-cartModal.addEventListener("click", (e) => {
-    if(e.target === cartModal){
-        cartModal.style.display = "none";
-    }
 });
 
 // =======================
 // Show More System
 // =======================
 const cards = document.querySelectorAll(".cards-container .card");
-const showMoreBtn = document.querySelector(".button"); // زرار Show More
+const showMoreBtn = document.querySelector(".button");
 let currentItems = 16;
 
-// نخفي الكروت الزايدة في البداية
 cards.forEach((card, index) => {
-    if (index >= currentItems) {
-        card.style.display = "none";
-    }
+    if (index >= currentItems) card.style.display = "none";
 });
 
-// عند الضغط على Show More
-showMoreBtn.addEventListener("click", () => {
-    currentItems += 16;
+if (showMoreBtn) {
+    showMoreBtn.addEventListener("click", () => {
+        currentItems += 16;
 
-    cards.forEach((card, index) => {
-        if (index < currentItems) {
-            card.style.display = "block";
-            card.style.animation = "fadeIn 0.5s ease"; // Animation smooth
-        }
+        cards.forEach((card, index) => {
+            if (index < currentItems) {
+                card.style.display = "block";
+                card.style.animation = "fadeIn 0.5s ease";
+            }
+        });
+
+        if (currentItems >= cards.length) showMoreBtn.style.display = "none";
     });
-
-    // لو الكروت خلصت → اخفي الزرار
-    if (currentItems >= cards.length) {
-        showMoreBtn.style.display = "none";
-    }
-});
+}
 </script>
 <html>
