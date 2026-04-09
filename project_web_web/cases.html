@@ -808,9 +808,9 @@
 
 <!-- Cart Icon -->
 <div class="cart-wrapper">
-    <button class="cart-icon">
-        <i class="fa-solid fa-cart-arrow-down" style="color: rgb(255, 254, 251);"></i> 
-    </button>
+    <a href="shoppingPasket.html" class="cart-icon">
+        <i class="fa-solid fa-cart-arrow-down" style="color: rgb(255, 254, 251);"></i>
+    </a>
 </div>
 
 <!-- Buy Now Message -->
@@ -860,8 +860,10 @@ document.querySelectorAll(".buy-btn").forEach(btn => {
         const card = e.target.closest(".card");
         const title = card.querySelector(".title").innerText;
         const price = card.querySelector(".price").innerText;
+        const image = card.querySelector("img").src; // جلب رابط الصورة
 
-        cart.push({title, price});
+        // إضافة المنتج للسلة مع الصورة
+        cart.push({title, price, image, quantity: 1});
         localStorage.setItem("cart", JSON.stringify(cart));
         updateCartUI();
 

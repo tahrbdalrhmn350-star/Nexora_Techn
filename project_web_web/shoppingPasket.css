@@ -1,0 +1,118 @@
+header h1 { 
+    text-align: center; 
+    font-size: 28px; 
+    margin-bottom: 25px; 
+    color: #1e3a8a; 
+}
+
+.cart-container { 
+    max-width: 900px; 
+    margin: 0 auto; 
+    background: white;
+    padding: 30px; 
+    border-radius: 12px; 
+    box-shadow: 0 5px 25px rgba(0,0,0,0.15); 
+}
+
+.cart-item { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    padding: 15px 0; 
+    border-bottom: 1px solid #ddd; 
+    flex-wrap: wrap; 
+    gap: 10px; 
+}
+
+.cart-image { 
+    width: 80px; 
+    height: 80px; 
+    object-fit: cover; 
+    border-radius: 8px; 
+    margin-right: 15px; 
+}
+
+.cart-details { 
+    flex: 1; 
+    min-width: 200px; 
+}
+
+.cart-title { 
+    display: block; 
+    font-weight: bold; 
+    font-size: 18px; 
+}
+
+.cart-price { 
+    display: block; 
+    font-size: 16px; 
+    color: #555; 
+    margin-top: 4px; 
+}
+
+.quantity-controls { 
+    display: flex; 
+    align-items: center; 
+    gap: 8px; 
+    margin-top: 8px; 
+}
+
+.quantity-controls button { 
+    background: #4f46e5; 
+    color: white; 
+    border: none; 
+    border-radius: 6px; 
+    padding: 4px 10px; 
+    cursor: pointer; 
+    font-size: 16px; 
+}
+
+.quantity-controls .delete { 
+    background: red; 
+}
+
+.quantity { 
+    min-width: 24px; 
+    text-align: center; 
+}
+
+.confirm-btn { 
+    margin-top: 10px; 
+    padding: 8px 16px; 
+    background: #10b981; 
+    color: white; 
+    border: none; 
+    border-radius: 6px; 
+    cursor: pointer; 
+    font-size: 16px; 
+}
+
+.total { 
+    text-align: right; 
+    margin-top: 25px; 
+    font-size: 20px; 
+    font-weight: bold; 
+}
+
+.empty-cart { 
+    text-align: center; 
+    margin-top: 50px; 
+    font-size: 18px; 
+    color: #555; 
+}
+
+.back-btn { 
+    display: block; 
+    margin: 30px auto; 
+    background: #3b82f6; 
+    color: white; 
+    border: none; 
+    padding: 12px 25px; 
+    font-size: 16px; 
+    border-radius: 6px; 
+    cursor: pointer; 
+}
+ 
+.back-btn i { 
+    margin-right: 8px; 
+}
